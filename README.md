@@ -19,5 +19,7 @@ Then run `make berkeley-testfloat-3/build/Linux-x86_64-GCC/testfloat_gen` to com
 To run a specific test, see Makefile for more details.
 
 For example: 
+
 Run `make fdiv_tests` to run FDIV tests.
+
 Run `make fadd_tests` to run FADD tests.
