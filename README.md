@@ -16,6 +16,8 @@ Run `make init` to init git submodules
 
 Then run `make berkeley-testfloat-3/build/Linux-x86_64-GCC/testfloat_gen` to compile Softfloat and Testfloat
 
-Run `make all_tests` to run all unit tests.
-
 To run a specific test, see Makefile for more details.
+
+For example: 
+Run `make fdiv_tests` to run FDIV tests.
+Run `make fadd_tests` to run FADD tests.
