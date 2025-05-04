@@ -8,7 +8,7 @@
 - Float -> Int Converter
 - Int -> Float Converter
 - Float -> Float Converter
-- SRT16 Floating-point Divider / SRT4 Floating-point Square Root Unit
+- Goldschmidt Floating-point Divider / Square Root Unit
 
 ## Unit testing
 
