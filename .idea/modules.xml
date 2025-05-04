@@ -1,0 +1,9 @@
+<project version="4">
+    <component name="ProjectModuleManager">
+        <modules>
+            <module fileurl="file://$PROJECT_DIR$/.idea/mill_modules/fudian.iml" filepath="$PROJECT_DIR$/.idea/mill_modules/fudian.iml"/>
+            <module fileurl="file://$PROJECT_DIR$/.idea/mill_modules/fudian.tests.iml" filepath="$PROJECT_DIR$/.idea/mill_modules/fudian.tests.iml"/>
+            <module fileurl="file://$PROJECT_DIR$/.idea/mill_modules/mill-build.iml" filepath="$PROJECT_DIR$/.idea/mill_modules/mill-build.iml"/>
+        </modules>
+    </component>
+</project>

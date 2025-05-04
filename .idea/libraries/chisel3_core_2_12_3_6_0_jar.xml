@@ -1,0 +1,10 @@
+<component name="libraryTable">
+    <library name="chisel3-core_2.12-3.6.0.jar">
+        <CLASSES>
+            <root url="jar://$PROJECT_DIR$/../../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/edu/berkeley/cs/chisel3-core_2.12/3.6.0/chisel3-core_2.12-3.6.0.jar!/"/>
+        </CLASSES>
+        <SOURCES>
+            <root url="jar://$PROJECT_DIR$/../../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/edu/berkeley/cs/chisel3-core_2.12/3.6.0/chisel3-core_2.12-3.6.0-sources.jar!/"/>
+        </SOURCES>
+    </library>
+</component>
