@@ -12,9 +12,9 @@ import utils.lza_utils._
 class ReciprocalLUT(input_width: Int, sig_width: Int) extends Module {
   val io = IO(new Bundle {
     val in = Input(UInt(input_width.W))
-    val recp = Output(UInt(sig_width.W))
-    val recpSqrt = Output(UInt(sig_width.W))
-    val recpSqrt2x = Output(UInt(sig_width.W))
+    val recp = Output(UInt((input_width+2).W))
+    val recpSqrt = Output(UInt((input_width+2).W))
+    val recpSqrt2x = Output(UInt((input_width+2).W))
   })
 
   val tableSize: Int = 1 << input_width
@@ -23,11 +23,7 @@ class ReciprocalLUT(input_width: Int, sig_width: Int) extends Module {
 
     def quantize(value: Double): UInt = {
       val scaled = (value * (1L << sig_width)).toLong
-      if (scaled == (1L << sig_width)) {
-        1.U(1.W) ## 0.U((sig_width - 1).W)
-      } else {
-        0.U(1.W) ## scaled.U(sig_width - 1, 1)
-      }
+      scaled.U(sig_width, sig_width - input_width - 1)
     }
 
     val recp = quantize(1.0 / M)
@@ -207,7 +203,7 @@ class FDIV(val expWidth: Int, val sigWidth: Int) extends Module {
   val gSIterUnit = Module(new GoldSchIterUnit(sigWidth, padding_width))
   gSIterUnit.io.in.bits.n := s1_a_sig_aligned
   gSIterUnit.io.in.bits.d := Mux(s1_is_sqrt, s1_a_sig_aligned, s1_b_sig_aligned)
-  gSIterUnit.io.in.bits.r := lut_res
+  gSIterUnit.io.in.bits.r := lut_res ## 0.U((sigWidth - lut_input_width - 2).W)
   gSIterUnit.io.in.bits.sqrt := s1_is_sqrt
   gSIterUnit.io.in.bits.sqrt2x := s1_is_sqrt2x
   gSIterUnit.io.in.bits.flush := io.flush
@@ -407,6 +403,7 @@ class GoldSchIterUnit(sigWidth: Int, padding_width: Int = 6) extends Module{
     cycle := 0.U
     out_valid := false.B
   }
+
   def fixpoint_mul(a: UInt, b: UInt): UInt = {
     val width = sigWidth + padding_width + 1
     val prod = (a * b)(width * 2 - 1, 0)
